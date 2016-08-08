@@ -25,7 +25,7 @@ import UIKit
 /// Protocol used as the base protocol type for a observer class
 @objc protocol ObservableProtocol: class {}
 
-protocol Observable: class {
+protocol Observable {
     /// Observer is a generic type used for classes used as observers
     associatedtype Observer: ObservableProtocol
 
@@ -36,12 +36,12 @@ protocol Observable: class {
     /// Call this function to register the observer object.
     ///
     /// - parameter observer: A reference to a object that will get notifications
-    func add(observer: Observer)
+    mutating func add(observer: Observer)
 
     /// Call this function to de-register the observer object.
     ///
     /// - parameter observer: A reference to the object to de-register
-    func remove(observer: Observer)
+    mutating func remove(observer: Observer)
 
     /// This method is call by the Observed object to call the passed block
     /// for each registered observer
@@ -54,7 +54,7 @@ extension Observable {
     /// Call this function to register the observer object.
     ///
     /// - parameter observer: A reference to a object that will get notifications
-    func add(observer: Observer) {
+    mutating func add(observer: Observer) {
         self.observers.append(observer)
     }
 
@@ -62,7 +62,7 @@ extension Observable {
     /// Call this function to de-register the observer object.
     ///
     /// - parameter observer: A reference to the object to de-register
-    func remove(observer: Observer) {
+    mutating func remove(observer: Observer) {
         for (index, entry) in observers.enumerated() {
             if entry === observer {
                 observers.remove(at: index)
