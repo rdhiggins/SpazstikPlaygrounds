@@ -85,7 +85,6 @@ extension Observable {
 
 
 
-// Forces restriction on protocol so that it is limited to AnyObject
 @objc protocol MyProtocol: ObservableProtocol {
     func didSayHello() -> String
 }
