@@ -22,6 +22,9 @@
 
 import UIKit
 
+// This example accompanies the article:
+// http://www.spazstik-software.com/blog/article/a-reusable-observer-protocol-written-in-swift
+
 /// Protocol used as the base protocol type for a observer class
 @objc protocol ObservableProtocol: class {}
 
